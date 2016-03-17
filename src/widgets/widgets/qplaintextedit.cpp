@@ -1958,16 +1958,17 @@ void QPlainTextEdit::paintEvent(QPaintEvent *e)
             bool drawCursorAsBlock = drawCursor && overwriteMode() ;
 
             if (drawCursorAsBlock) {
-                if (context.cursorPosition == blpos + bllen - 1) {
-                    drawCursorAsBlock = false;
-                } else {
+              // Draw the cursor as block even if the cursor is at the end of a line.
+//                if (context.cursorPosition == blpos + bllen - 1) {
+//                    drawCursorAsBlock = false;
+//                } else {
                     QTextLayout::FormatRange o;
                     o.start = context.cursorPosition - blpos;
                     o.length = 1;
                     o.format.setForeground(palette().base());
                     o.format.setBackground(palette().text());
                     selections.append(o);
-                }
+//                }
             }
 
 
